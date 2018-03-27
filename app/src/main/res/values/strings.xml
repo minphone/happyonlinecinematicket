@@ -1,0 +1,19 @@
+<resources>
+  <string name="app_name">HappyOnlineCinemaTicket</string>
+
+  <string name="menu_search">Search</string>
+
+  <string name="heading_today_movie">Today in the Cinema</string>
+  <string name="heading_coming_movie">Coming Soon</string>
+  <string name="heading_movie_theater">Movie Theater</string>
+
+  <string name="title_movies">Movies</string>
+  <string name="label_item_movie_out_of_rating">/ 10</string>
+  <string name="txt_movie_short_desc">Jake Pentecost, son of Stacker Pentecost, reunites with Mako Mori to lead a new generation of Jaeger pilots, including rival Lambert and 15-year-old hacker Amara, against a new Kaiju threat.</string>
+  <string name="nav_movies">Movies</string>
+  <string name="nav_theater">Movie Theater</string>
+  <string name="nav_collection">My Collection</string>
+  <string name="menu_map">map</string>
+  <string name="demo_theater_address">near Hanthawaddy Circle., Between Pyay Road and Kyun Taw Road, , Yangon, Myanmar</string>
+  <string name="demo_theater_name">Junction Square</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/colorPrimary"
+    >
+
+  <de.hdodenhof.circleimageview.CircleImageView
+      android:id="@+id/iv_profile"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="@dimen/margin_normal"
+      android:layout_marginStart="@dimen/margin_normal"
+      android:src="@mipmap/jing_tian"
+      />
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="@dimen/margin_normal"
+      android:layout_marginStart="@dimen/margin_normal"
+      android:layout_toEndOf="@id/iv_profile"
+      android:layout_toRightOf="@id/iv_profile"
+      android:orientation="vertical"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Jing Tian"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_tiny"
+        android:fontFamily="sans-serif-condensed"
+        android:text="jingtian@gmail.com"
+        android:textColor="@color/colorLightWhite"
+        android:textSize="@dimen/font_small"
+        />
+
+  </LinearLayout>
+
+</RelativeLayout>
