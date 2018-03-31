@@ -6,33 +6,38 @@
 
   <application
       android:allowBackup="true"
-      android:icon="@mipmap/happy_icon"
+      android:icon="@mipmap/icon"
       android:label="@string/app_name"
-      android:roundIcon="@mipmap/happy_icon"
+      android:roundIcon="@mipmap/icon"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity
-        android:name=".activity.CinemaActivity"
+        android:name=".activity.MoviesActivity"
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme.NoActionBar">
+
+    </activity>
+
+    <activity
+        android:name=".activity.CinemaActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar"/>
+
+    <activity
+        android:name=".activity.MovieDetailsActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.Immersive"/>
+
+    <activity
+        android:name=".activity.LogInActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.Immersive">
 
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
-
-    </activity>
-
-    <activity
-        android:name=".activity.TheaterActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar"/>
-
-    <activity
-        android:name=".activity.SplashActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar">
 
     </activity>
 

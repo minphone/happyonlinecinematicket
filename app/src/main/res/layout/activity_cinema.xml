@@ -14,7 +14,7 @@
       xmlns:tools="http://schemas.android.com/tools"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      tools:context="co.minphone.happyonlinecinematicket.activity.CinemaActivity"
+      tools:context="co.minphone.happyonlinecinematicket.activity.MoviesActivity"
       >
 
     <android.support.design.widget.AppBarLayout
@@ -32,89 +32,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <FrameLayout
+        android:id="@+id/layout_theater"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          >
-
-        <RelativeLayout
-            android:id="@+id/layout_today_movie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-          <TextView
-              android:id="@+id/tv_today_movie_heading"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="@dimen/margin_tiny"
-              android:layout_marginLeft="@dimen/margin_normal"
-              android:layout_marginStart="@dimen/margin_normal"
-              android:layout_marginTop="@dimen/margin_small"
-              android:fontFamily="sans-serif-condensed"
-              android:text="@string/heading_today_movie"
-              android:textColor="@color/colorAccent"
-              android:textSize="@dimen/font_large"
-              />
-
-          <android.support.v7.widget.RecyclerView
-              android:id="@+id/rv_today_movie_post"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_below="@id/tv_today_movie_heading"
-              android:nestedScrollingEnabled="false"
-              />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_coming_movie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_today_movie"
-            >
-
-          <TextView
-              android:id="@+id/tv_coming_movie_heading"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="@dimen/margin_tiny"
-              android:layout_marginLeft="@dimen/margin_normal"
-              android:layout_marginStart="@dimen/margin_normal"
-              android:layout_marginTop="@dimen/margin_small"
-              android:fontFamily="sans-serif-condensed"
-              android:text="@string/heading_coming_movie"
-              android:textColor="@color/colorAccent"
-              android:textSize="@dimen/font_large"
-              />
-
-          <android.support.v7.widget.RecyclerView
-              android:id="@+id/rv_coming_movie_post"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_below="@id/tv_coming_movie_heading"
-              android:nestedScrollingEnabled="false"
-              />
-
-        </RelativeLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone"
-            />
-
-      </RelativeLayout>
-
-    </android.support.v4.widget.NestedScrollView>
+        />
 
   </android.support.design.widget.CoordinatorLayout>
 

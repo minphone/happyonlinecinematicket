@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    >
+
+  <TextureView
+      android:id="@+id/trailer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:fitsSystemWindows="true"
+      />
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#66ffffff"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:orientation="vertical"
+      >
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/icon"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_small"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/app_title"
+        android:textColor="#f8D049"
+        android:textSize="@dimen/font_heading_1"
+        android:textStyle="italic|bold"
+        />
+
+
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/btn_facebook"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="@dimen/margin_large"
+      android:layout_marginLeft="@dimen/margin_large"
+      android:layout_marginRight="@dimen/margin_large"
+      android:background="#3b5998"
+      android:drawableLeft="@mipmap/facebook"
+      android:drawablePadding="@dimen/margin_normal"
+      android:drawableStart="@mipmap/facebook"
+      android:fontFamily="sans-serif-condensed"
+      android:text="Log in with Facebook"
+      android:textAllCaps="false"
+      android:textColor="@color/colorWhite"
+      android:textSize="@dimen/font_large"
+      />
+
+</RelativeLayout>

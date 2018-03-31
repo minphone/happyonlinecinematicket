@@ -23,5 +23,6 @@
 
   <string name="facebook_app_id">156135738412536</string>
   <string name="fb_login_protocol_scheme">fb156135738412536</string>
+  <string name="app_title">Happy Cinema</string>
 
 </resources>

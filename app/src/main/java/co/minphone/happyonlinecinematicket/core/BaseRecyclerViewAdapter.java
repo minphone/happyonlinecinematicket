@@ -1,6 +1,8 @@
 package co.minphone.happyonlinecinematicket.core;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,17 @@ import java.util.List;
 public abstract class BaseRecyclerViewAdapter<W, T extends BaseViewHolder<W>>
     extends RecyclerView.Adapter<T> {
 
-  private List<W> dataList = new ArrayList<>();
+  private List<W> dataList;
+  @Nullable protected ItemViewOnClickListener itemViewOnClickListener;
+
+  public BaseRecyclerViewAdapter() {
+    dataList = new ArrayList<>();
+  }
+
+  public BaseRecyclerViewAdapter(
+      ItemViewOnClickListener itemViewOnClickListener) {
+    this.itemViewOnClickListener = itemViewOnClickListener;
+  }
 
   @Override public void onBindViewHolder(T holder, int position) {
     holder.bindData(dataList.get(position));

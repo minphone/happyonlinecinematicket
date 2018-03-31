@@ -13,9 +13,11 @@ import co.minphone.happyonlinecinematicket.viewholder.MovieHolder;
  */
 
 public class ComingMovieAdapter extends BaseRecyclerViewAdapter<MovieModel, MovieHolder> {
-  @NonNull @Override public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  @NonNull @Override
+  public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new MovieHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false));
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false),
+        itemViewOnClickListener);
   }
 
   @Override public void onBindViewHolder(MovieHolder holder, int position) {

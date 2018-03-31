@@ -13,13 +13,15 @@ import co.minphone.happyonlinecinematicket.viewholder.GenreHolder;
  */
 
 public class GenreForMovieAdapter extends BaseRecyclerViewAdapter<GenreModel, GenreHolder> {
-  @NonNull @Override public GenreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  @NonNull @Override
+  public GenreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new GenreHolder(
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_genre, parent, false));
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_genre, parent, false),
+        itemViewOnClickListener);
   }
 
   @Override public void onBindViewHolder(GenreHolder holder, int position) {
-    if (position == getItemCount() -1){
+    if (position == getItemCount() - 1) {
       holder.removeSeparator();
     }
   }

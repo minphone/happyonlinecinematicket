@@ -1,5 +1,6 @@
 package co.minphone.happyonlinecinematicket.viewholder;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,6 +10,7 @@ import co.minphone.happyonlinecinematicket.adapter.BookedProfileAdapter;
 import co.minphone.happyonlinecinematicket.adapter.GenreForMovieAdapter;
 import co.minphone.happyonlinecinematicket.core.BaseViewHolder;
 import co.minphone.happyonlinecinematicket.model.MovieModel;
+import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 
 /**
  * Created by MinPhone on 3/18/18.
@@ -22,8 +24,9 @@ public class MovieHolder extends BaseViewHolder<MovieModel> {
   private GenreForMovieAdapter genreForMovieAdapter;
   private BookedProfileAdapter bookedProfileAdapter;
 
-  public MovieHolder(View itemView) {
-    super(itemView);
+  public MovieHolder(View itemView, @Nullable
+      ItemViewOnClickListener itemViewOnClickListener) {
+    super(itemView, itemViewOnClickListener);
   }
 
   @Override public void bindData(MovieModel data) {

@@ -18,7 +18,7 @@ public class TheaterListViewAdapter
   @NonNull @Override
   public TheaterListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new TheaterListViewHolder(LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.item_theater_listview, parent, false));
+        .inflate(R.layout.item_theater_listview, parent, false), itemViewOnClickListener);
   }
 
   @Override public void onBindViewHolder(TheaterListViewHolder holder, int position) {

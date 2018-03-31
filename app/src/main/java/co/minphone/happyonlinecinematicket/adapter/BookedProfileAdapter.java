@@ -15,7 +15,7 @@ public class BookedProfileAdapter extends BaseRecyclerViewAdapter<String, Booked
   @NonNull @Override
   public BookedProfileHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new BookedProfileHolder(LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.item_booked_profile, parent, false));
+        .inflate(R.layout.item_booked_profile, parent, false), itemViewOnClickListener);
   }
 
   @Override public void onBindViewHolder(BookedProfileHolder holder, int position) {
