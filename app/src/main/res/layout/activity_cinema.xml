@@ -59,7 +59,7 @@
               android:layout_marginTop="@dimen/margin_small"
               android:fontFamily="sans-serif-condensed"
               android:text="@string/heading_today_movie"
-              android:textColor="@color/colorRed"
+              android:textColor="@color/colorAccent"
               android:textSize="@dimen/font_large"
               />
 
@@ -90,7 +90,7 @@
               android:layout_marginTop="@dimen/margin_small"
               android:fontFamily="sans-serif-condensed"
               android:text="@string/heading_coming_movie"
-              android:textColor="@color/colorRed"
+              android:textColor="@color/colorAccent"
               android:textSize="@dimen/font_large"
               />
 
