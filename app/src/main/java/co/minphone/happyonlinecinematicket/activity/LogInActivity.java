@@ -7,10 +7,13 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import butterknife.BindView;
@@ -34,6 +37,7 @@ public class LogInActivity extends AppCompatActivity
     implements TextureView.SurfaceTextureListener {
 
   @BindView(R.id.trailer) TextureView trailer;
+  @BindView(R.id.btn_facebook) Button btnFacebook;
 
   private static final String EMAIL = "email";
 
@@ -73,6 +77,7 @@ public class LogInActivity extends AppCompatActivity
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
+    callbackManager.onActivityResult(requestCode, resultCode, data);
   }
 
   @Override public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
@@ -152,29 +157,38 @@ public class LogInActivity extends AppCompatActivity
                   new GraphRequest.GraphJSONObjectCallback() {
                     @Override public void onCompleted(JSONObject object, GraphResponse response) {
                       try {
-                        Toast.makeText(getApplicationContext(),
-                            "Id "
-                                + object.getString("id")
-                                + " Name "
-                                + object.getString("name")
-                                + " Email "
-                                + object.getString("email"),
-                            Toast.LENGTH_LONG).show();
+                        String profilePic = "";
+                        if (object.has("picture")) {
+                          profilePic = object.getJSONObject("picture")
+                              .getJSONObject("data")
+                              .getString("url");
+                        }
+                        RegisterActivity.start(LogInActivity.this, object.getString("name"),
+                            object.getString("email"), object.getString("gender"));
                       } catch (JSONException e) {
                         e.fillInStackTrace();
                       }
                     }
                   });
+              Bundle parameters = new Bundle();
+              parameters.putString("fields", "id,name,email,gender,picture.type(large)");
+              request.setParameters(parameters);
+              request.executeAsync();
             }
           }
 
           @Override public void onCancel() {
-
+            Log.d("Cancel", "Testing");
           }
 
           @Override public void onError(FacebookException error) {
-
+            Log.d("Error", error.getMessage());
+            showSnakeBar("Check Your Internet Connection");
           }
         });
+  }
+
+  private void showSnakeBar(String msg) {
+    Snackbar.make(trailer, msg, Snackbar.LENGTH_LONG).show();
   }
 }

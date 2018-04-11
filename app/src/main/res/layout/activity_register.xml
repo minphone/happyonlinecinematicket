@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/margin_large"
+    android:paddingRight="@dimen/margin_large"
+    >
+
+  <LinearLayout
+      android:id="@+id/layout_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_normal"
+      android:gravity="center_horizontal"
+      android:orientation="vertical"
+      >
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@mipmap/icon_white"
+        />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_small"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/app_title"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/font_large"
+        android:textStyle="bold"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/layout_user_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/layout_title"
+      android:layout_marginTop="@dimen/margin_normal"
+      android:background="@color/colorWhite"
+      >
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_user_name"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingStart="@dimen/margin_normal"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/font_normal"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/layout_email"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/layout_user_name"
+      android:layout_marginTop="@dimen/margin_normal"
+      android:background="@color/colorWhite"
+      >
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_vertical"
+        android:hint="@string/hint_email"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingStart="@dimen/margin_normal"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/font_normal"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/layout_gender"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/layout_email"
+      android:layout_marginTop="@dimen/margin_normal"
+      android:background="@color/colorWhite"
+      >
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinner_sex"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:entries="@array/gender_arrays"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingStart="@dimen/margin_normal"
+        android:prompt="@string/title_gender"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/font_normal"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/layout_region"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/layout_gender"
+      android:layout_marginTop="@dimen/margin_normal"
+      android:background="@color/colorWhite"
+      >
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinner_location"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:entries="@array/region_arrays"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingEnd="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingStart="@dimen/margin_normal"
+        android:prompt="@string/title_location"
+        android:textColor="@color/colorLightBlack"
+        android:textSize="@dimen/font_normal"
+        />
+
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/btn_register"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="@dimen/font_normal"
+      android:background="@color/colorAccent"
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="sans-serif-condensed"
+      android:foreground="@drawable/ripple_white"
+      android:text="@string/txt_register"
+      android:textAllCaps="false"
+      android:textColor="@color/colorWhite"
+      android:textSize="@dimen/font_large"
+      android:textStyle="bold"
+      />
+
+</RelativeLayout>
