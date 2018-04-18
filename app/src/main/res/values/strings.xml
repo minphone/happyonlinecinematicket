@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">HappyOnlineCinemaTicket</string>
+  <string name="app_name">Happy Cinema</string>
   <string name="app_title">Happy Cinema</string>
 
   <string name="menu_search">Search</string>
@@ -9,12 +9,12 @@
   <string name="heading_coming_movie">Coming Soon</string>
   <string name="heading_movie_theater">Movie Theater</string>
 
-  <string name="hint_user_name">Enter Your Name</string>
+  <string name="hint_user_name">Enter User Name</string>
   <string name="hint_email">Enter Your Email</string>
 
   <string name="title_movies">Movies</string>
 
-  <string name="label_item_movie_out_of_rating">/ 10</string>
+  <string name="label_item_movie_out_of_rating">/10</string>
 
   <string name="txt_movie_short_desc">Jake Pentecost, son of Stacker Pentecost, reunites with Mako Mori to lead a new generation of Jaeger pilots, including rival Lambert and 15-year-old hacker Amara, against a new Kaiju threat.</string>
 
@@ -30,6 +30,12 @@
   <string name="title_gender">Select Your Gender</string>
   <string name="title_location">Choose Your Region</string>
   <string name="txt_register">Register</string>
+  <string name="transition_movie_poster">Transition Movie Poster</string>
+  <string name="transition_movie_genre">Transition Movie Genre</string>
+  <string name="transition_movie_title">Transition Moview Title</string>
+  <string name="transition_movie_kind">Transition Movie Kind</string>
+  <string name="transition_movie_language">Transition Movie Language</string>
+  <string name="txt_show_more">Show More</string>
 
   <string-array name="gender_arrays">
     <item>Choose Your Gender</item>

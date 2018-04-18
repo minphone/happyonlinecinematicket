@@ -24,4 +24,5 @@ public class BookedProfileHolder extends BaseViewHolder<String> {
   @Override public void bindData(String data) {
 
   }
+
 }

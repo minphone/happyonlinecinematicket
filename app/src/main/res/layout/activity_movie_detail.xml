@@ -7,9 +7,9 @@
     >
 
   <android.support.design.widget.AppBarLayout
+      android:id="@+id/appBar"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@color/colorWhite"
+      android:layout_height="200dp"
       android:fitsSystemWindows="true"
       android:theme="@style/AppTheme.AppBarOverlay"
       >
@@ -18,16 +18,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        app:contentScrim="@color/colorPrimary"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         >
 
-      <android.support.v4.view.ViewPager
-          android:id="@+id/viewPager"
+      <FrameLayout
           android:layout_width="match_parent"
-          android:layout_height="200dp"
+          android:layout_height="match_parent"
           android:fitsSystemWindows="true"
           app:layout_collapseMode="parallax"
-          />
+          >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/pageIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/margin_normal"
+            />
+
+      </FrameLayout>
 
       <android.support.v7.widget.Toolbar
           android:id="@+id/toolBar"
@@ -39,52 +55,330 @@
 
     </android.support.design.widget.CollapsingToolbarLayout>
 
-    <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/pageIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_normal_n"
-        />
-
-    <android.support.v7.widget.CardView
-        android:layout_width="110dp"
-        android:layout_height="180dp"
-        android:layout_marginLeft="@dimen/margin_normal"
-        android:layout_marginStart="@dimen/margin_normal"
-        android:layout_marginTop="-30dp"
-        >
-
-      <ImageView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:scaleType="centerCrop"
-          android:src="@mipmap/movie_sample"
-          />
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="#55ffffff"
-          />
-
-      <ImageView
-          android:id="@+id/iv_play_trailer"
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:layout_gravity="center"
-          android:src="@drawable/ic_play_circle_filled_black_24dp"
-          />
-
-    </android.support.v7.widget.CardView>
-
   </android.support.design.widget.AppBarLayout>
 
   <android.support.v4.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/margin_small"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
       >
 
+    <RelativeLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_tiny"
+        android:layout_marginLeft="@dimen/margin_tiny"
+        android:layout_marginRight="@dimen/margin_tiny"
+        android:layout_marginStart="@dimen/margin_tiny"
+        >
+
+      <android.support.v7.widget.CardView
+          android:id="@+id/cv_poster"
+          android:layout_width="120dp"
+          android:layout_height="180dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          >
+
+        <ImageView
+            android:id="@+id/iv_movie_poster"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/movie_sample"
+            android:transitionName="@string/transition_movie_poster"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#55ffffff"
+            />
+
+        <ImageView
+            android:id="@+id/iv_play_trailer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_play_circle_filled_black_24dp"
+            />
+
+      </android.support.v7.widget.CardView>
+
+      <TextView
+          android:id="@+id/tv_movie_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:fontFamily="sans-serif-condensed"
+          android:text="Pacific Rim Uprising"
+          android:textColor="@color/colorLightBlack"
+          android:textSize="@dimen/font_normal"
+          android:textStyle="bold"
+          android:transitionName="@string/transition_movie_title"
+          />
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/rv_genre"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/tv_movie_title"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_small"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:transitionName="@string/transition_movie_genre"
+          />
+
+      <LinearLayout
+          android:id="@+id/layout_movie_type"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/rv_genre"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_small"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:orientation="horizontal"
+          >
+
+        <TextView
+            android:id="@+id/tv_movie_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_dark_pink"
+            android:paddingBottom="@dimen/margin_tiny"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal"
+            android:paddingTop="@dimen/margin_tiny"
+            android:text="3D"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_small"
+            android:transitionName="@string/transition_movie_kind"
+            />
+
+        <TextView
+            android:id="@+id/tv_movie_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_tiny"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:background="@drawable/bg_rounded_pink"
+            android:paddingBottom="@dimen/margin_tiny"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal"
+            android:paddingTop="@dimen/margin_tiny"
+            android:text="ENG"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/font_small"
+            android:transitionName="@string/transition_movie_language"
+            />
+
+      </LinearLayout>
+
+      <android.support.v7.widget.AppCompatRatingBar
+          android:id="@+id/ratingBar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/layout_movie_type"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_small"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:isIndicator="false"
+          android:numStars="5"
+          android:scaleX="0.5"
+          android:scaleY="0.5"
+          android:transformPivotX="0dp"
+          android:transformPivotY="0dp"
+          />
+
+      <TextView
+          android:id="@+id/tv_movie_duration"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/ratingBar"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_marginTop="-30dp"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:drawableLeft="@drawable/ic_access_time_black_24dp"
+          android:drawablePadding="@dimen/margin_tiny"
+          android:fontFamily="sans-serif-condensed"
+          android:text="2h 30min"
+          android:textColor="@color/colorLightBlack"
+          android:textSize="@dimen/font_normal"
+          android:textStyle="bold"
+          />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/ratingBar"
+          android:layout_marginLeft="@dimen/margin_normal"
+          android:layout_marginStart="@dimen/margin_normal"
+          android:layout_marginTop="-30dp"
+          android:layout_toEndOf="@id/tv_movie_duration"
+          android:layout_toRightOf="@id/tv_movie_duration"
+          android:drawableLeft="@drawable/ic_call_to_action_black_24dp"
+          android:drawablePadding="@dimen/margin_tiny"
+          android:fontFamily="sans-serif-condensed"
+          android:text="12 April 2018"
+          android:textColor="@color/colorLightBlack"
+          android:textSize="@dimen/font_normal"
+          />
+
+      <TextView
+          android:id="@+id/tv_show_more"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/tv_movie_duration"
+          android:layout_marginLeft="@dimen/margin_small"
+          android:layout_marginStart="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_tiny"
+          android:layout_toEndOf="@id/cv_poster"
+          android:layout_toRightOf="@id/cv_poster"
+          android:background="@drawable/bg_bottom_selector"
+          android:clickable="true"
+          android:focusable="true"
+          android:fontFamily="sans-serif-condensed"
+          android:foreground="@drawable/ripple_white"
+          android:text="@string/txt_show_more"
+          android:textColor="@color/colorPrimary"
+          android:textSize="@dimen/font_normal"
+          android:textStyle="bold"
+          />
+
+      <android.support.v7.widget.CardView
+          android:id="@+id/cv_location"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/cv_poster"
+          android:layout_marginTop="@dimen/margin_small"
+          android:clickable="true"
+          android:focusable="true"
+          >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
+            >
+
+          <ImageView
+              android:id="@+id/iv_movie_location"
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:src="@drawable/ic_location_on_black_24dp"
+              />
+
+          <TextView
+              android:id="@+id/tv_location"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="@dimen/margin_small"
+              android:layout_marginStart="@dimen/margin_small"
+              android:layout_toEndOf="@id/iv_movie_location"
+              android:layout_toRightOf="@id/iv_movie_location"
+              android:fontFamily="sans-serif-condensed"
+              android:text="Yangon"
+              android:textColor="@color/colorLightBlack"
+              android:textSize="@dimen/font_large"
+              />
+
+          <ImageView
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentRight="true"
+              android:src="@drawable/ic_arrow_drop_down_black_24dp"
+              />
+
+        </RelativeLayout>
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+          android:id="@+id/cv_showtime"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/cv_location"
+          android:layout_marginBottom="@dimen/margin_small"
+          android:layout_marginTop="@dimen/margin_small"
+          android:clickable="true"
+          android:focusable="true"
+          >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_small"
+            >
+
+          <ImageView
+              android:id="@+id/iv_movie_showtime"
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:src="@drawable/ic_today_black_24dp"
+              />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="@dimen/margin_small"
+              android:layout_marginStart="@dimen/margin_small"
+              android:layout_toEndOf="@id/iv_movie_showtime"
+              android:layout_toRightOf="@id/iv_movie_showtime"
+              android:fontFamily="sans-serif-condensed"
+              android:text="Today (Thu)"
+              android:textColor="@color/colorLightBlack"
+              android:textSize="@dimen/font_large"
+              />
+
+          <ImageView
+              android:id="@+id/iv_movie_showtime_next"
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:layout_alignParentEnd="true"
+              android:layout_alignParentRight="true"
+              android:foreground="@drawable/ripple_white"
+              android:src="@drawable/ic_chevron_right_black_24dp"
+              />
+
+          <ImageView
+              android:id="@+id/iv_movie_showtime_previous"
+              android:layout_width="35dp"
+              android:layout_height="35dp"
+              android:layout_toLeftOf="@id/iv_movie_showtime_next"
+              android:layout_toStartOf="@id/iv_movie_showtime_next"
+              android:foreground="@drawable/ripple_white"
+              android:src="@drawable/ic_chevron_left_black_24dp"
+              />
+
+        </RelativeLayout>
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/rv_movie_showTime"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/cv_showtime"
+          android:nestedScrollingEnabled="false"
+          />
+
+    </RelativeLayout>
 
   </android.support.v4.widget.NestedScrollView>
 
@@ -98,8 +392,8 @@
       android:src="@drawable/ic_add_black_24dp"
       app:backgroundTint="@color/colorWhite"
       app:elevation="@dimen/margin_small"
-      app:fabSize="normal"
-      app:layout_anchor="@id/viewPager"
+      app:fabSize="auto"
+      app:layout_anchor="@id/appBar"
       app:layout_anchorGravity="bottom|end|right"
       />
 

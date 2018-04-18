@@ -16,6 +16,14 @@ import co.minphone.happyonlinecinematicket.viewholder.MovieHolder;
 
 public class TodayMovieAdapter extends BaseRecyclerViewAdapter<MovieModel, MovieHolder> {
 
+  private ItemViewOnClickListener itemViewOnClickListener;
+
+  public TodayMovieAdapter(
+      ItemViewOnClickListener itemViewOnClickListener) {
+    super(itemViewOnClickListener);
+    this.itemViewOnClickListener = itemViewOnClickListener;
+  }
+
   @NonNull @Override
   public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new MovieHolder(

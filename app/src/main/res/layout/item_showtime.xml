@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_small"
+    android:background="@drawable/bg_rounded_border_black"
+    android:clickable="true"
+    android:focusable="true"
+    android:fontFamily="sans-serif-condensed"
+    android:foreground="@drawable/ripple_white"
+    android:paddingBottom="@dimen/margin_tiny"
+    android:paddingEnd="@dimen/margin_small"
+    android:paddingLeft="@dimen/margin_small"
+    android:paddingRight="@dimen/margin_small"
+    android:paddingStart="@dimen/margin_small"
+    android:paddingTop="@dimen/margin_tiny"
+    android:text="12:00 PM"
+    android:textColor="@color/colorLightBlack"
+    android:textSize="@dimen/font_large"
+    >
+
+</TextView>

@@ -3,8 +3,10 @@ package co.minphone.happyonlinecinematicket.viewholder;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import butterknife.BindView;
+import butterknife.OnClick;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.adapter.BookedProfileAdapter;
 import co.minphone.happyonlinecinematicket.adapter.GenreForMovieAdapter;
@@ -32,6 +34,10 @@ public class MovieHolder extends BaseViewHolder<MovieModel> {
   @Override public void bindData(MovieModel data) {
     setUpGenreList();
     setUpBookedProfileList();
+  }
+
+  @OnClick(R.id.cv_movie) public void onCardViewClick() {
+    itemViewOnClickListener.onItemClick(getAdapterPosition(), itemView);
   }
 
   private void setUpBookedProfileList() {

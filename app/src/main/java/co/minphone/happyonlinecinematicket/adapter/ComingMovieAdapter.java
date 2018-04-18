@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.core.BaseRecyclerViewAdapter;
 import co.minphone.happyonlinecinematicket.model.MovieModel;
+import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 import co.minphone.happyonlinecinematicket.viewholder.MovieHolder;
 
 /**
@@ -13,6 +14,15 @@ import co.minphone.happyonlinecinematicket.viewholder.MovieHolder;
  */
 
 public class ComingMovieAdapter extends BaseRecyclerViewAdapter<MovieModel, MovieHolder> {
+
+  private ItemViewOnClickListener itemViewOnClickListener;
+
+  public ComingMovieAdapter(
+      ItemViewOnClickListener itemViewOnClickListener) {
+    super(itemViewOnClickListener);
+    this.itemViewOnClickListener = itemViewOnClickListener;
+  }
+
   @NonNull @Override
   public MovieHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new MovieHolder(
