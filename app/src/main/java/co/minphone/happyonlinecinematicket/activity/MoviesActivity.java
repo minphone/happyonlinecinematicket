@@ -17,12 +17,16 @@ import android.widget.RelativeLayout;
 import butterknife.BindString;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
+import co.minphone.happyonlinecinematicket.Viewable.MoviesView;
 import co.minphone.happyonlinecinematicket.adapter.ComingMovieAdapter;
 import co.minphone.happyonlinecinematicket.adapter.TodayMovieAdapter;
 import co.minphone.happyonlinecinematicket.core.BaseNavigationView;
+import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.presenter.MoviesPresenter;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
+import dagger.android.AndroidInjection;
 
-public class MoviesActivity extends BaseNavigationView {
+public class MoviesActivity extends BaseActivity<MoviesPresenter> implements MoviesView<MoviesPresenter> {
 
   @BindView(R.id.toolBar) Toolbar toolbar;
   @BindView(R.id.rv_today_movie_post) RecyclerView rvTodayMovie;
@@ -50,10 +54,12 @@ public class MoviesActivity extends BaseNavigationView {
   }
 
   @Override protected void onCreate(Bundle savedInstanceState) {
+    AndroidInjection.inject(this);
     super.onCreate(savedInstanceState);
     setUpToolBar();
     setUpTodayMovie();
     setUpComingSoonMovie();
+    presenter.test();
   }
 
   @Override protected int getLayoutId() {
@@ -138,5 +144,13 @@ public class MoviesActivity extends BaseNavigationView {
     rvTodayMovie.setAdapter(todayMovieAdapter);
     rvTodayMovie.setLayoutManager(
         new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+  }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
   }
 }

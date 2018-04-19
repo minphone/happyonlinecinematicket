@@ -8,7 +8,7 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.core.BaseActivity;
+import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
 
 public class RegisterActivity extends BaseActivity {
 
@@ -67,5 +67,13 @@ public class RegisterActivity extends BaseActivity {
         spinnerSex.setSelection(2);
       }
     }
+  }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
   }
 }

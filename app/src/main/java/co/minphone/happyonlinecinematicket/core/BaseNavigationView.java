@@ -11,6 +11,7 @@ import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.activity.CinemaActivity;
 import co.minphone.happyonlinecinematicket.activity.MoviesActivity;
+import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
 
 /**
  * Created by MinPhone on 3/25/18.

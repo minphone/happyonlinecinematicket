@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.adapter.TheaterListViewAdapter;
-import co.minphone.happyonlinecinematicket.core.BaseFragment;
+import co.minphone.happyonlinecinematicket.mvp.BaseFragment;
 
 /**
  * Created by MinPhone on 3/25/18.
@@ -34,5 +34,13 @@ public class ListViewTheaterFragment extends BaseFragment {
     rvTheater.setAdapter(adapter);
     rvTheater.setLayoutManager(
         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+  }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
   }
 }

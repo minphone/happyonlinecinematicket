@@ -5,23 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import butterknife.BindString;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.adapter.BookedProfileAdapter;
 import co.minphone.happyonlinecinematicket.adapter.GenreForMovieAdapter;
 import co.minphone.happyonlinecinematicket.adapter.MovieShowTimeAdapter;
-import co.minphone.happyonlinecinematicket.core.BaseActivity;
+import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
 import co.minphone.happyonlinecinematicket.utilities.ImageViewPagerAdapter;
 
 public class MovieDetailsActivity extends BaseActivity {
@@ -97,5 +92,13 @@ public class MovieDetailsActivity extends BaseActivity {
     rvGenre.setAdapter(genreForMovieAdapter);
     rvGenre.setLayoutManager(
         new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+  }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
   }
 }

@@ -8,19 +8,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import co.minphone.happyonlinecinematicket.R;
+import co.minphone.happyonlinecinematicket.Viewable.LogInView;
+import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.presenter.LogInPresenter;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -28,27 +28,29 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import dagger.android.AndroidInjection;
 import java.io.IOException;
 import java.util.Arrays;
+import javax.inject.Inject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LogInActivity extends AppCompatActivity
-    implements TextureView.SurfaceTextureListener {
+public class LogInActivity extends BaseActivity<LogInPresenter>
+    implements TextureView.SurfaceTextureListener, LogInView<LogInPresenter> {
 
   @BindView(R.id.trailer) TextureView trailer;
   @BindView(R.id.btn_facebook) Button btnFacebook;
 
-  private static final String EMAIL = "email";
-
-  private Unbinder unbinder;
   private MediaPlayer mediaPlayer;
   private CallbackManager callbackManager;
 
+  @Inject @Override public void injectPresenter(LogInPresenter presenter) {
+    super.injectPresenter(presenter);
+  }
+
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    AndroidInjection.inject(this);
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
-    unbinder = ButterKnife.bind(this, this);
     trailer.setSurfaceTextureListener(this);
     registerFacebook();
   }
@@ -69,10 +71,13 @@ public class LogInActivity extends AppCompatActivity
 
   @Override protected void onStop() {
     super.onStop();
-    unbinder.unbind();
     if (mediaPlayer != null) {
       mediaPlayer = null;
     }
+  }
+
+  @Override protected int getLayoutId() {
+    return R.layout.activity_login;
   }
 
   @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,6 +117,22 @@ public class LogInActivity extends AppCompatActivity
 
   @Override public void onSurfaceTextureUpdated(SurfaceTexture surface) {
 
+  }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
+  }
+
+  @Override public void renderError(String message) {
+    showSnakeBar(message);
+  }
+
+  @Override public void renderHomeScreen() {
+    MoviesActivity.start(this);
   }
 
   @OnClick(R.id.btn_facebook) void onFacebookClick() {
@@ -163,8 +184,11 @@ public class LogInActivity extends AppCompatActivity
                               .getJSONObject("data")
                               .getString("url");
                         }
-                        RegisterActivity.start(LogInActivity.this, object.getString("name"),
-                            object.getString("email"), object.getString("gender"));
+                        presenter.logInUser(AccessToken.getCurrentAccessToken().getUserId(),
+                            object.getString("name"), object.getString("email"),
+                            object.getString("gender"), profilePic);
+                        /*RegisterActivity.start(LogInActivity.this, object.getString("name"),
+                            object.getString("email"), object.getString("gender"));*/
                       } catch (JSONException e) {
                         e.fillInStackTrace();
                       }

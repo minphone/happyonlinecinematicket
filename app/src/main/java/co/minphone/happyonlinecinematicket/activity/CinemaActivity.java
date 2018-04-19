@@ -68,4 +68,12 @@ public class CinemaActivity extends BaseNavigationView {
       actionBar.setTitle(headingMovieTheater);
     }
   }
+
+  @Override public void showLoading() {
+
+  }
+
+  @Override public void hideLoading() {
+
+  }
 }
