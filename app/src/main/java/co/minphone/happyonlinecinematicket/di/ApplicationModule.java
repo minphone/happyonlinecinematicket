@@ -11,12 +11,15 @@ import co.minphone.happyonlinecinematicket.di.subComponent.MovieSubComponent;
 import co.minphone.happyonlinecinematicket.data.network.NetworkManager;
 import co.minphone.happyonlinecinematicket.data.network.NetworkManagerImpl;
 import co.minphone.happyonlinecinematicket.data.network.RestAdapter;
+import co.minphone.happyonlinecinematicket.di.subComponent.SplashSubComponent;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 import retrofit2.Retrofit;
 
-@Module(subcomponents = { LogInSubComponent.class, MovieSubComponent.class })
+@Module(subcomponents = {
+    LogInSubComponent.class, MovieSubComponent.class, SplashSubComponent.class
+})
 public class ApplicationModule {
 
   @Provides Context provideContext(App application) {
@@ -31,11 +34,12 @@ public class ApplicationModule {
     return new NetworkManagerImpl(retrofit);
   }
 
-  @Singleton @Provides InternalStorageManager provideInternalStorageManager(Context context){
+  @Provides @Singleton InternalStorageManager provideInternalStorageManager(Context context){
     return new InternalStorageManagerImpl(context);
   }
 
-  @Singleton @Provides DataManager provideDataManager(NetworkManager networkManager, InternalStorageManager internalStorageManagerManager) {
-    return new DataManagerImpl(networkManager, internalStorageManagerManager);
+  @Singleton @Provides DataManager provideDataManager(NetworkManager networkManager,
+      InternalStorageManager internalStorageManager) {
+    return new DataManagerImpl(networkManager, internalStorageManager);
   }
 }

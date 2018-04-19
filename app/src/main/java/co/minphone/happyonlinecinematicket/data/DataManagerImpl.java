@@ -1,8 +1,10 @@
 package co.minphone.happyonlinecinematicket.data;
 
 import co.minphone.happyonlinecinematicket.data.internalStorage.InternalStorageManager;
+import co.minphone.happyonlinecinematicket.data.internalStorage.InternalStorageManagerImpl;
 import co.minphone.happyonlinecinematicket.data.network.NetworkManager;
 import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 import java.util.concurrent.Callable;
 import javax.inject.Inject;
@@ -17,7 +19,9 @@ public class DataManagerImpl implements DataManager {
     this.internalStorageManager = internalStorageManager;
   }
 
-  @Override public Single<UserVO> logInUser(final long userId, final String name, final String email, final int gender,
+  @Override
+  public Single<UserVO> logInUser(final long userId, final String name, final String email,
+      final int gender,
       final String profilePic) {
     return Single.fromCallable(new Callable<UserVO>() {
       @Override public UserVO call() throws Exception {
@@ -28,5 +32,10 @@ public class DataManagerImpl implements DataManager {
 
   @Override public void updateFirstTime() {
     internalStorageManager.updateFirstTime();
+  }
+
+  @Override public Single<Boolean> getIsFirstTime() {
+    return Single.just(internalStorageManager.getIsFirstTime());
+    //return null;
   }
 }

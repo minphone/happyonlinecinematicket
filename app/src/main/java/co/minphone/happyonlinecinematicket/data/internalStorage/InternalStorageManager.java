@@ -4,5 +4,5 @@ public interface InternalStorageManager {
 
   void updateFirstTime();
 
-  boolean getFirstTime();
+  boolean getIsFirstTime();
 }

@@ -2,6 +2,7 @@ package co.minphone.happyonlinecinematicket.data.internalStorage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import javax.inject.Inject;
 
 public class InternalStorageManagerImpl implements InternalStorageManager {
 
@@ -9,8 +10,8 @@ public class InternalStorageManagerImpl implements InternalStorageManager {
   private SharedPreferences.Editor editor;
   private static final String PREF_KEY_FIRST = "first";
 
-  public InternalStorageManagerImpl(Context context) {
-    sharedPreferences = context.getSharedPreferences("SharedPerences", Context.MODE_PRIVATE);
+  @Inject public InternalStorageManagerImpl(Context context) {
+    sharedPreferences = context.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
     editor = sharedPreferences.edit();
   }
 
@@ -18,7 +19,7 @@ public class InternalStorageManagerImpl implements InternalStorageManager {
     editor.putBoolean(PREF_KEY_FIRST, true).apply();
   }
 
-  @Override public boolean getFirstTime() {
+  @Override public boolean getIsFirstTime() {
     return sharedPreferences.getBoolean(PREF_KEY_FIRST, false);
   }
 }

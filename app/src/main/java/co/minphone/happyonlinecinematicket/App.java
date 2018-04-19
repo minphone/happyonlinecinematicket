@@ -8,14 +8,14 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import javax.inject.Inject;
 
-public class App extends Application implements HasActivityInjector{
+public class App extends Application implements HasActivityInjector {
 
   @Inject DispatchingAndroidInjector<Activity> dispatchingActivityInjector;
 
   @Override public void onCreate() {
     super.onCreate();
 
-    DaggerApplicationComponent.builder().build().inject(this);
+    DaggerApplicationComponent.builder().application(this).build().inject(this);
   }
 
   @Override public AndroidInjector<Activity> activityInjector() {

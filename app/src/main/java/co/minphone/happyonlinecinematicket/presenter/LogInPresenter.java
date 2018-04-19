@@ -1,12 +1,11 @@
 package co.minphone.happyonlinecinematicket.presenter;
 
-import android.util.Log;
 import co.minphone.happyonlinecinematicket.Viewable.LogInView;
 import co.minphone.happyonlinecinematicket.data.DataManager;
+import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import co.minphone.happyonlinecinematicket.mapper.UserMapper;
 import co.minphone.happyonlinecinematicket.model.UserModel;
 import co.minphone.happyonlinecinematicket.mvp.BasePresenter;
-import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
@@ -19,9 +18,9 @@ import javax.inject.Inject;
 
 public class LogInPresenter extends BasePresenter<LogInView> {
 
-  private final String USER_NOT_REGISTER = "UserNotRegister";
-
   private final DataManager dataManager;
+
+  private final String USER_NOT_REGISTER = "UserNotRegister";
 
   @Inject public LogInPresenter(DataManager dataManager) {
     this.dataManager = dataManager;
@@ -50,10 +49,10 @@ public class LogInPresenter extends BasePresenter<LogInView> {
             return userMapper.map(userVO);
           }
         }).doOnNext(new Consumer<UserModel>() {
-        @Override public void accept(UserModel userModel) throws Exception {
-            dataManager.updateFirstTime();
-          }
-        }).subscribeOn(Schedulers.io())
+      @Override public void accept(UserModel userModel) throws Exception {
+        dataManager.updateFirstTime();
+      }
+    }).subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Observer<UserModel>() {
           @Override public void onSubscribe(Disposable d) {
@@ -68,8 +67,7 @@ public class LogInPresenter extends BasePresenter<LogInView> {
             if (e.getMessage().equals(USER_NOT_REGISTER)) {
               getRegions();
             } else {
-              Log.d("Error", "onError: " + e);
-              //getView().renderError(e.getMessage());
+              getView().renderError(e.getMessage());
             }
           }
 

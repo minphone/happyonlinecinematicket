@@ -12,12 +12,24 @@
       android:roundIcon="@mipmap/icon"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+
+    <activity
+        android:name=".activity.SplashActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.NoActionBar.Immersive">
+
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+
+    </activity>
+
     <activity
         android:name=".activity.MoviesActivity"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar">
-
-    </activity>
+        android:theme="@style/AppTheme.NoActionBar"/>
 
     <activity
         android:name=".activity.RegisterActivity"
@@ -39,15 +51,7 @@
     <activity
         android:name=".activity.LogInActivity"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar.Immersive">
-
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-
-    </activity>
+        android:theme="@style/AppTheme.NoActionBar.Immersive"/>
 
     <meta-data
         android:name="com.facebook.sdk.ApplicationId"
@@ -58,9 +62,11 @@
         android:configChanges=
             "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
         android:label="@string/app_name"/>
+
     <activity
         android:name="com.facebook.CustomTabActivity"
         android:exported="true">
+
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
 
@@ -69,6 +75,7 @@
 
         <data android:scheme="@string/fb_login_protocol_scheme"/>
       </intent-filter>
+
     </activity>
 
   </application>

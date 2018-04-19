@@ -1,6 +1,7 @@
 package co.minphone.happyonlinecinematicket.mvp;
 
 import android.support.annotation.NonNull;
+import co.minphone.happyonlinecinematicket.data.DataManager;
 import co.minphone.happyonlinecinematicket.mvp.contract.Presentable;
 import co.minphone.happyonlinecinematicket.mvp.contract.Viewable;
 

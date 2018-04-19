@@ -7,4 +7,6 @@ public interface DataManager {
   Single<UserVO> logInUser(long userId, String name, String email, int gender, String profilePic);
 
   void updateFirstTime();
+
+  Single<Boolean> getIsFirstTime();
 }

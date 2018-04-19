@@ -1,5 +1,6 @@
 package co.minphone.happyonlinecinematicket.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
@@ -44,8 +45,9 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
   private MediaPlayer mediaPlayer;
   private CallbackManager callbackManager;
 
-  @Inject @Override public void injectPresenter(LogInPresenter presenter) {
-    super.injectPresenter(presenter);
+  public static void start(Context context) {
+      Intent starter = new Intent(context, LogInActivity.class);
+      context.startActivity(starter);
   }
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
