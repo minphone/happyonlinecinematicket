@@ -14,14 +14,18 @@ import android.widget.FrameLayout;
 import butterknife.BindString;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.core.BaseNavigationView;
+import co.minphone.happyonlinecinematicket.Viewable.CinemaView;
+import co.minphone.happyonlinecinematicket.mvp.BaseNavigationActivity;
 import co.minphone.happyonlinecinematicket.fragment.ListViewTheaterFragment;
+import co.minphone.happyonlinecinematicket.presenter.CinemaPresenter;
+import dagger.android.AndroidInjection;
 
 /**
  * Created by MinPhone on 3/25/18.
  */
 
-public class CinemaActivity extends BaseNavigationView {
+public class CinemaActivity extends BaseNavigationActivity<CinemaPresenter>
+    implements CinemaView<CinemaPresenter> {
 
   @BindView(R.id.toolBar) Toolbar toolbar;
   @BindView(R.id.layout_theater) FrameLayout layoutTheater;
@@ -36,6 +40,7 @@ public class CinemaActivity extends BaseNavigationView {
   }
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    AndroidInjection.inject(this);
     super.onCreate(savedInstanceState);
     setUpToolBar();
     setUpLayout();

@@ -1,5 +1,6 @@
 package co.minphone.happyonlinecinematicket.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,14 +20,22 @@ public abstract class BaseFragment<T extends Presentable> extends Fragment imple
 
   private T presenter;
 
+  @Inject @Override public void injectPresenter(T presenter) {
+    this.presenter = presenter;
+  }
+
+  @Override public void onAttach(Context context) {
+    super.onAttach(context);
+    getPresenter().attachView(this);
+  }
+
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(getLayoutId(), container, false);
-    ButterKnife.bind(this,view);
-    getPresenter().onCreatedView();
+    ButterKnife.bind(this, view);
     setUpLayout();
-    getPresenter().attachView(this);
+    getPresenter().onCreatedView();
     return view;
   }
 
@@ -57,10 +66,6 @@ public abstract class BaseFragment<T extends Presentable> extends Fragment imple
 
   @Override public T getPresenter() {
     return presenter;
-  }
-
-  @Inject @Override public void injectPresenter(T presenter) {
-    this.presenter = presenter;
   }
 
   protected abstract void setUpLayout();

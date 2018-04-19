@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.core.BaseViewHolder;
+import co.minphone.happyonlinecinematicket.view.BaseViewHolder;
 import co.minphone.happyonlinecinematicket.model.GenreModel;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 

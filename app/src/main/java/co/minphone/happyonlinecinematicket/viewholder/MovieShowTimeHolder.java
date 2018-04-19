@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.adapter.ShowTimeAdapter;
-import co.minphone.happyonlinecinematicket.core.BaseViewHolder;
+import co.minphone.happyonlinecinematicket.view.BaseViewHolder;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 
 public class MovieShowTimeHolder extends BaseViewHolder<String> {

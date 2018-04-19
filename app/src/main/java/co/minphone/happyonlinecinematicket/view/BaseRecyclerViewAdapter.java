@@ -1,4 +1,4 @@
-package co.minphone.happyonlinecinematicket.core;
+package co.minphone.happyonlinecinematicket.view;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;

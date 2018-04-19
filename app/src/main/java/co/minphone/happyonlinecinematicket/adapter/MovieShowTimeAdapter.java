@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.core.BaseRecyclerViewAdapter;
+import co.minphone.happyonlinecinematicket.view.BaseRecyclerViewAdapter;
 import co.minphone.happyonlinecinematicket.viewholder.MovieShowTimeHolder;
 
 public class MovieShowTimeAdapter extends BaseRecyclerViewAdapter<String, MovieShowTimeHolder> {

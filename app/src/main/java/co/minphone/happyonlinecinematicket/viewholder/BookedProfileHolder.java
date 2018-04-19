@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
-import co.minphone.happyonlinecinematicket.core.BaseViewHolder;
+import co.minphone.happyonlinecinematicket.view.BaseViewHolder;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 import de.hdodenhof.circleimageview.CircleImageView;
 

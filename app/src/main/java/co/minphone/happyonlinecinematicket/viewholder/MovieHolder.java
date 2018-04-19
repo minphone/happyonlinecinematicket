@@ -3,14 +3,13 @@ package co.minphone.happyonlinecinematicket.viewholder;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.OnClick;
 import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.adapter.BookedProfileAdapter;
 import co.minphone.happyonlinecinematicket.adapter.GenreForMovieAdapter;
-import co.minphone.happyonlinecinematicket.core.BaseViewHolder;
+import co.minphone.happyonlinecinematicket.view.BaseViewHolder;
 import co.minphone.happyonlinecinematicket.model.MovieModel;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 

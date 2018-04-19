@@ -8,9 +8,13 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
+import co.minphone.happyonlinecinematicket.Viewable.RegisterView;
 import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.presenter.RegisterPresenter;
+import dagger.android.AndroidInjection;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity<RegisterPresenter>
+    implements RegisterView<RegisterPresenter> {
 
   private static final String USERNAME = "UserName";
   private static final String EMAIL = "Email";
@@ -34,8 +38,8 @@ public class RegisterActivity extends BaseActivity {
   }
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    AndroidInjection.inject(this);
     super.onCreate(savedInstanceState);
-
     Bundle bundle = getIntent().getExtras();
     if (bundle != null) {
       userName = bundle.getString(USERNAME);

@@ -20,13 +20,13 @@ import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.Viewable.MoviesView;
 import co.minphone.happyonlinecinematicket.adapter.ComingMovieAdapter;
 import co.minphone.happyonlinecinematicket.adapter.TodayMovieAdapter;
-import co.minphone.happyonlinecinematicket.core.BaseNavigationView;
 import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.mvp.BaseNavigationActivity;
 import co.minphone.happyonlinecinematicket.presenter.MoviesPresenter;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
 import dagger.android.AndroidInjection;
 
-public class MoviesActivity extends BaseActivity<MoviesPresenter> implements MoviesView<MoviesPresenter> {
+public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> implements MoviesView<MoviesPresenter> {
 
   @BindView(R.id.toolBar) Toolbar toolbar;
   @BindView(R.id.rv_today_movie_post) RecyclerView rvTodayMovie;

@@ -14,12 +14,16 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import butterknife.BindView;
 import co.minphone.happyonlinecinematicket.R;
+import co.minphone.happyonlinecinematicket.Viewable.MovieDetailsView;
 import co.minphone.happyonlinecinematicket.adapter.GenreForMovieAdapter;
 import co.minphone.happyonlinecinematicket.adapter.MovieShowTimeAdapter;
 import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.presenter.MovieDetailsPresenter;
 import co.minphone.happyonlinecinematicket.utilities.ImageViewPagerAdapter;
+import dagger.android.AndroidInjection;
 
-public class MovieDetailsActivity extends BaseActivity {
+public class MovieDetailsActivity extends BaseActivity<MovieDetailsPresenter> implements
+    MovieDetailsView<MovieDetailsPresenter> {
 
   @BindView(R.id.viewPager) ViewPager vpHero;
   @BindView(R.id.toolBar) Toolbar toolbar;
@@ -45,6 +49,7 @@ public class MovieDetailsActivity extends BaseActivity {
   }
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+    AndroidInjection.inject(this);
     super.onCreate(savedInstanceState);
     setUpViewPager();
     setUpToolbar();
