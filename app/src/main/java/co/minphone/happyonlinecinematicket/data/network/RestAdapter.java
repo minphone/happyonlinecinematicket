@@ -1,4 +1,4 @@
-package co.minphone.happyonlinecinematicket.network;
+package co.minphone.happyonlinecinematicket.data.network;
 
 import co.minphone.happyonlinecinematicket.BuildConfig;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

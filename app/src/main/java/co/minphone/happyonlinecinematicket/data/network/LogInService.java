@@ -1,6 +1,6 @@
-package co.minphone.happyonlinecinematicket.network;
+package co.minphone.happyonlinecinematicket.data.network;
 
-import co.minphone.happyonlinecinematicket.network.model.UserVO;
+import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

@@ -1,6 +1,6 @@
-package co.minphone.happyonlinecinematicket.network;
+package co.minphone.happyonlinecinematicket.data.network;
 
-import co.minphone.happyonlinecinematicket.network.model.UserVO;
+import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import java.io.IOException;
 import javax.inject.Inject;
 import retrofit2.Retrofit;

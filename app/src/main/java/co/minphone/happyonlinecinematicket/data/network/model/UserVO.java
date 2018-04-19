@@ -1,4 +1,4 @@
-package co.minphone.happyonlinecinematicket.network.model;
+package co.minphone.happyonlinecinematicket.data.network.model;
 
 import com.google.gson.annotations.SerializedName;
 

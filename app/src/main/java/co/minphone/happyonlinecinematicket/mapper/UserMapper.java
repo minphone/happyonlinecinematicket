@@ -1,7 +1,7 @@
 package co.minphone.happyonlinecinematicket.mapper;
 
 import co.minphone.happyonlinecinematicket.model.UserModel;
-import co.minphone.happyonlinecinematicket.network.model.UserVO;
+import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 
 public class UserMapper extends BaseMapper<UserVO, UserModel> {
 

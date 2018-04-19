@@ -1,4 +1,4 @@
-package co.minphone.happyonlinecinematicket.network;
+package co.minphone.happyonlinecinematicket.data.network;
 
 public class URL {
 
