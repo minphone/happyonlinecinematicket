@@ -1,6 +1,9 @@
 package co.minphone.happyonlinecinematicket.activity;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,12 +37,30 @@ public class SplashActivity extends BaseActivity<SplashPresenter>
 
   }
 
-  @Override public void renderData(Boolean aBoolean) {
-    if (aBoolean) {
-      MoviesActivity.start(this);
-    } else {
-      LogInActivity.start(this);
-    }
+  @Override public void renderData(final Boolean aBoolean) {
+    new Handler().postDelayed(new Runnable() {
+      @Override public void run() {
+        if (aBoolean) {
+          MoviesActivity.start(SplashActivity.this);
+        } else {
+          LogInActivity.start(SplashActivity.this);
+        }
+      }
+    }, 3000);
+
+    new Handler().postDelayed(new Runnable() {
+      @Override public void run() {
+        ObjectAnimator iconAni = ObjectAnimator.ofFloat(ivAppIcon, "translationY", 0, -200f);
+        iconAni.setDuration(1500);
+
+        ObjectAnimator txtAni = ObjectAnimator.ofFloat(tvAppIcon, "translationY", 0, 200f);
+        txtAni.setDuration(1500);
+
+        AnimatorSet set = new AnimatorSet();
+        set.playTogether(iconAni, txtAni);
+        set.start();
+      }
+    }, 500);
   }
 
   @Override public void renderError(String message) {
