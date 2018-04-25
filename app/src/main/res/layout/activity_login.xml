@@ -2,21 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
     >
 
-  <TextureView
-      android:id="@+id/trailer"
+  <ImageView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:fitsSystemWindows="true"
+      android:scaleType="centerCrop"
+      android:src="@mipmap/login"
       />
 
   <View
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="#66ffffff"
+      android:background="#5888"
       />
 
   <LinearLayout
