@@ -26,15 +26,16 @@ public class LogInPresenter extends BasePresenter<LogInView> {
     this.dataManager = dataManager;
   }
 
-  public void logInUser(String userId, String name, String email, String gender,
-      String profilePic) {
+  public void logInUser(final String userId, final String name, final String email,
+      final String gender,
+      final String profilePic, String password) {
     int genderValue;
     if (gender.equals("male")) {
       genderValue = 0;
     } else {
       genderValue = 1;
     }
-    dataManager.logInUser(Long.parseLong(userId), name, email, genderValue, profilePic)
+    dataManager.logInUser(Long.parseLong(userId), name, email, genderValue, profilePic, password, 1)
         .toObservable()
         .flatMap(
             new Function<UserVO, ObservableSource<UserVO>>() {
@@ -65,7 +66,7 @@ public class LogInPresenter extends BasePresenter<LogInView> {
 
           @Override public void onError(Throwable e) {
             if (e.getMessage().equals(USER_NOT_REGISTER)) {
-              getRegions();
+              getView().renderRegistrationScreen(userId, name, email, gender, profilePic);
             } else {
               getView().renderError(e.getMessage());
             }
@@ -75,9 +76,5 @@ public class LogInPresenter extends BasePresenter<LogInView> {
 
           }
         });
-  }
-
-  private void getRegions() {
-
   }
 }

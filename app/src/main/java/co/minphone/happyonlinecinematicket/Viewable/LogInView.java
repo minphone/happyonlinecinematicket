@@ -7,4 +7,7 @@ public interface LogInView<T extends Presentable> extends Viewable<T> {
   void renderError(String message);
 
   void renderHomeScreen();
+
+  void renderRegistrationScreen(String userId, String name, String email, String gender,
+      String profilePic);
 }

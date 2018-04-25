@@ -33,7 +33,6 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
 
   @BindView(R.id.btn_facebook) Button btnFacebook;
 
-  private MediaPlayer mediaPlayer;
   private CallbackManager callbackManager;
 
   public static void start(Context context) {
@@ -49,23 +48,14 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
 
   @Override protected void onResume() {
     super.onResume();
-    if (mediaPlayer != null) {
-      mediaPlayer.start();
-    }
   }
 
   @Override protected void onPause() {
     super.onPause();
-    if (mediaPlayer != null) {
-      mediaPlayer.stop();
-    }
   }
 
   @Override protected void onStop() {
     super.onStop();
-    if (mediaPlayer != null) {
-      mediaPlayer = null;
-    }
   }
 
   @Override protected int getLayoutId() {
@@ -93,6 +83,12 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
     MoviesActivity.start(this);
   }
 
+  @Override
+  public void renderRegistrationScreen(String userId, String name, String email, String gender,
+      String profilePic) {
+    RegisterActivity.start(this, userId, name, email, gender, profilePic);
+  }
+
   @OnClick(R.id.btn_facebook) void onFacebookClick() {
     LoginManager.getInstance().logOut();
     LoginManager.getInstance()
@@ -118,9 +114,7 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
                         }
                         presenter.logInUser(AccessToken.getCurrentAccessToken().getUserId(),
                             object.getString("name"), object.getString("email"),
-                            object.getString("gender"), profilePic);
-                        /*RegisterActivity.start(LogInActivity.this, object.getString("name"),
-                            object.getString("email"), object.getString("gender"));*/
+                            object.getString("gender"), profilePic, "null");
                       } catch (JSONException e) {
                         e.fillInStackTrace();
                       }

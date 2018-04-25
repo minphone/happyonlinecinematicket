@@ -5,10 +5,15 @@ import com.google.auto.value.AutoValue;
 
 @AutoValue public abstract class UserModel {
   public abstract int id();
+
   public abstract String username();
+
   public abstract String email();
+
   public abstract int gender();
+
   public abstract int region_id();
+
   @Nullable public abstract String profileUrl();
 
   public static UserModel create(int id, String username, String email, int gender, int region_id,

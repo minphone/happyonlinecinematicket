@@ -13,7 +13,7 @@ public class UserVO {
 
   @SerializedName("region_id") private int region_id;
 
-  @SerializedName("facebook_id") private int facebook_id;
+  @SerializedName("facebook_id") private long facebook_id;
 
   @SerializedName("profileUrl") private String profileUrl;
 
@@ -41,7 +41,7 @@ public class UserVO {
     return region_id;
   }
 
-  public int getFacebook_id() {
+  public long getFacebook_id() {
     return facebook_id;
   }
 
