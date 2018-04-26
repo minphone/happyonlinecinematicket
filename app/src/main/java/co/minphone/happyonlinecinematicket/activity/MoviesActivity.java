@@ -3,6 +3,7 @@ package co.minphone.happyonlinecinematicket.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBar;
@@ -20,13 +21,17 @@ import co.minphone.happyonlinecinematicket.R;
 import co.minphone.happyonlinecinematicket.Viewable.MoviesView;
 import co.minphone.happyonlinecinematicket.adapter.ComingMovieAdapter;
 import co.minphone.happyonlinecinematicket.adapter.TodayMovieAdapter;
-import co.minphone.happyonlinecinematicket.mvp.BaseActivity;
+import co.minphone.happyonlinecinematicket.data.network.model.MovieVO;
 import co.minphone.happyonlinecinematicket.mvp.BaseNavigationActivity;
 import co.minphone.happyonlinecinematicket.presenter.MoviesPresenter;
 import co.minphone.happyonlinecinematicket.utilities.ItemViewOnClickListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import dagger.android.AndroidInjection;
+import java.util.List;
 
-public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> implements MoviesView<MoviesPresenter> {
+public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter>
+    implements MoviesView<MoviesPresenter> {
 
   @BindView(R.id.toolBar) Toolbar toolbar;
   @BindView(R.id.rv_today_movie_post) RecyclerView rvTodayMovie;
@@ -59,7 +64,7 @@ public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> impl
     setUpToolBar();
     setUpTodayMovie();
     setUpComingSoonMovie();
-    presenter.test();
+    presenter.getMovies();
   }
 
   @Override protected int getLayoutId() {
@@ -70,6 +75,28 @@ public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> impl
     MenuInflater inflater = getMenuInflater();
     inflater.inflate(R.menu.menu_cinema, menu);
     return true;
+  }
+
+  @Override public void showLoading() {
+    progressBar.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideLoading() {
+    progressBar.setVisibility(View.GONE);
+  }
+
+  @Override public void renderError(String message) {
+    progressBar.setVisibility(View.GONE);
+    showSnakeBar(message);
+  }
+
+  @Override public void renderMovies(List<MovieVO> movieVOS) {
+    progressBar.setVisibility(View.GONE);
+    todayMovieAdapter.setDataList(movieVOS);
+  }
+
+  private void showSnakeBar(String msg) {
+    Snackbar.make(progressBar, msg, Snackbar.LENGTH_LONG).show();
   }
 
   private void setUpToolBar() {
@@ -106,7 +133,7 @@ public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> impl
                 transition_image, transition_genre, transition_title, transition_kind,
                 transition_Lang);
 
-        MovieDetailsActivity.start(MoviesActivity.this, optionsCompat);
+        MovieDetailsActivity.start(MoviesActivity.this, optionsCompat, null);
       }
     });
     rvComingMovie.setAdapter(comingMovieAdapter);
@@ -137,20 +164,18 @@ public class MoviesActivity extends BaseNavigationActivity<MoviesPresenter> impl
             ActivityOptionsCompat.makeSceneTransitionAnimation(MoviesActivity.this,
                 transition_image, transition_genre, transition_title, transition_kind,
                 transition_Lang);
-
-        MovieDetailsActivity.start(MoviesActivity.this, optionsCompat);
+        MovieVO movieVO = todayMovieAdapter.getData(position);
+        String movieString = "";
+        if (movieVO != null) {
+          Gson gson = new Gson();
+          movieString = gson.toJson(movieVO, new TypeToken<MovieVO>() {
+          }.getType());
+        }
+        MovieDetailsActivity.start(MoviesActivity.this, optionsCompat, movieString);
       }
     });
     rvTodayMovie.setAdapter(todayMovieAdapter);
     rvTodayMovie.setLayoutManager(
         new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-  }
-
-  @Override public void showLoading() {
-
-  }
-
-  @Override public void hideLoading() {
-
   }
 }

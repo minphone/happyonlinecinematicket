@@ -23,6 +23,7 @@ public abstract class BaseRecyclerViewAdapter<W, T extends BaseViewHolder<W>>
   public BaseRecyclerViewAdapter(
       ItemViewOnClickListener itemViewOnClickListener) {
     this.itemViewOnClickListener = itemViewOnClickListener;
+    dataList = new ArrayList<>();
   }
 
   @Override public void onBindViewHolder(T holder, int position) {
@@ -46,5 +47,9 @@ public abstract class BaseRecyclerViewAdapter<W, T extends BaseViewHolder<W>>
   public void addData(W data) {
     this.dataList.add(data);
     notifyDataSetChanged();
+  }
+
+  public W getData(int position){
+    return dataList.get(position);
   }
 }

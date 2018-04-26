@@ -4,15 +4,15 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import co.minphone.happyonlinecinematicket.R;
+import co.minphone.happyonlinecinematicket.data.network.model.GenreVO;
 import co.minphone.happyonlinecinematicket.view.BaseRecyclerViewAdapter;
-import co.minphone.happyonlinecinematicket.model.GenreModel;
 import co.minphone.happyonlinecinematicket.viewholder.GenreHolder;
 
 /**
  * Created by MinPhone on 3/18/18.
  */
 
-public class GenreForMovieAdapter extends BaseRecyclerViewAdapter<GenreModel, GenreHolder> {
+public class GenreForMovieAdapter extends BaseRecyclerViewAdapter<GenreVO, GenreHolder> {
   @NonNull @Override
   public GenreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     return new GenreHolder(
@@ -24,9 +24,6 @@ public class GenreForMovieAdapter extends BaseRecyclerViewAdapter<GenreModel, Ge
     if (position == getItemCount() - 1) {
       holder.removeSeparator();
     }
-  }
-
-  @Override public int getItemCount() {
-    return 3;
+    super.onBindViewHolder(holder, position);
   }
 }

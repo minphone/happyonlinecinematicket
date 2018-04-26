@@ -3,6 +3,7 @@ package co.minphone.happyonlinecinematicket.data;
 import co.minphone.happyonlinecinematicket.data.internalStorage.InternalStorageManager;
 import co.minphone.happyonlinecinematicket.data.internalStorage.InternalStorageManagerImpl;
 import co.minphone.happyonlinecinematicket.data.network.NetworkManager;
+import co.minphone.happyonlinecinematicket.data.network.model.MovieVO;
 import co.minphone.happyonlinecinematicket.data.network.model.RegionVO;
 import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import io.reactivex.Observable;
@@ -28,7 +29,8 @@ public class DataManagerImpl implements DataManager {
       final String profilePic, final String password, final int location) {
     return Single.fromCallable(new Callable<UserVO>() {
       @Override public UserVO call() throws Exception {
-        return networkManager.logInUser(userId, name, email, gender, profilePic, password, location);
+        return networkManager.logInUser(userId, name, email, gender, profilePic, password,
+            location);
       }
     });
   }
@@ -45,6 +47,14 @@ public class DataManagerImpl implements DataManager {
     return Single.fromCallable(new Callable<List<RegionVO>>() {
       @Override public List<RegionVO> call() throws Exception {
         return networkManager.getRegions();
+      }
+    });
+  }
+
+  @Override public Single<List<MovieVO>> getMovies(final int page) {
+    return Single.fromCallable(new Callable<List<MovieVO>>() {
+      @Override public List<MovieVO> call() throws Exception {
+        return networkManager.getMovies(page);
       }
     });
   }

@@ -1,5 +1,6 @@
 package co.minphone.happyonlinecinematicket.data;
 
+import co.minphone.happyonlinecinematicket.data.network.model.MovieVO;
 import co.minphone.happyonlinecinematicket.data.network.model.RegionVO;
 import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import io.reactivex.Single;
@@ -14,4 +15,6 @@ public interface DataManager {
   Single<Boolean> getIsFirstTime();
 
   Single<List<RegionVO>> getRegions();
+
+  Single<List<MovieVO>> getMovies(int page);
 }

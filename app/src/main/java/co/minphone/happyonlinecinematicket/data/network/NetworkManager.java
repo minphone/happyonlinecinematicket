@@ -1,5 +1,6 @@
 package co.minphone.happyonlinecinematicket.data.network;
 
+import co.minphone.happyonlinecinematicket.data.network.model.MovieVO;
 import co.minphone.happyonlinecinematicket.data.network.model.RegionVO;
 import co.minphone.happyonlinecinematicket.data.network.model.UserVO;
 import java.io.IOException;
@@ -13,4 +14,6 @@ public interface NetworkManager {
       IOException;
 
   List<RegionVO> getRegions() throws IOException;
+
+  List<MovieVO> getMovies(int page) throws IOException;
 }

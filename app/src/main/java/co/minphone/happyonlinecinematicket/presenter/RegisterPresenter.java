@@ -51,7 +51,7 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
   public void registerUser(String facebookId, String userName, String email, String gender,
       Integer location, String profilePic) {
     int genderValue;
-    if (gender.equals("male")) {
+    if (gender.equals("Male")) {
       genderValue = 0;
     } else {
       genderValue = 1;
