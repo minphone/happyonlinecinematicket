@@ -2,10 +2,14 @@ package co.minphone.happyonlinecinematicket.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.TextureView;
 import android.widget.Button;
@@ -24,6 +28,8 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import dagger.android.AndroidInjection;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +40,7 @@ public class LogInActivity extends BaseActivity<LogInPresenter>
   @BindView(R.id.btn_facebook) Button btnFacebook;
 
   private CallbackManager callbackManager;
+  PackageInfo info;
 
   public static void start(Context context) {
     Intent starter = new Intent(context, LogInActivity.class);
